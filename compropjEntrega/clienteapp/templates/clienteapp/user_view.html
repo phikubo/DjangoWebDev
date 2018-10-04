@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>Compro</title>
+        <link rel="shortcut icon" href="{% static 'clienteapp/images/fav_icon.png' %}" type="image/x-icon">
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'>
+        <link rel='stylesheet prefetch' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
+        <link rel="stylesheet" href="{% static 'clienteapp/css/tabs.css' %}">
+        <link rel="stylesheet" href="https://api.mazemap.com/js/v2.0.10/mazemap.min.css">
+        <script type='text/javascript' src='https://api.mazemap.com/js/v2.0.10/mazemap.min.js'></script>
+        <style>
+                body { margin:0px; padding:0px; width: 100%; height:100%; }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar is-info">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+                </a>
+
+                <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="navbarExampleTransparentExample" class="navbar-menu">
+                <div class="navbar-start is-link">
+                    <a class="navbar-item" href="{% url 'users_path:landing_view' %}">
+                        Home
+                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="/documentation/overview/start/">
+                            Ir a
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                            <a class="navbar-item" href="/localadmin">
+                                Perfil
+                            </a>
+                            
+                
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" href="{% url 'users_path:cc_view' %}">
+                                Search
+                            </a>
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+
+        <section class="hero is-info">
+            
+
+            <div class="tabs is-boxed is-centered main-menu" id="nav">
+                    &nbsp;
+                    &nbsp;  
+                    &nbsp;  
+
+                <li>
+                           Bienvenido a: {{ identificacion }}   
+                     </li>
+               <ul>
+                    
+                    <li data-target="pane-1" id="1">
+                        <a>
+                            <span class="icon is-small"><i class="fa fa-image"></i></span>
+                            <span>Piso 1 </span>
+                        </a>
+                    </li>
+
+                    <li data-target="pane-2" id="2">
+                        <a>
+                            <span class="icon is-small"><i class="fa fa-image"></i></span>
+                            <span>Piso 2 </span>
+                        </a>
+                    </li>
+
+                    <li data-target="pane-1" id="3">
+                        <a>
+                            <span class="icon is-small"><i class="fa fa-image"></i></span>
+                            <span>Piso 3 </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li data-target="pane-4" id="4" class="is-active">
+                        <a>
+                            <span class="icon is-small"><i class="fab fa-empire"></i></span>
+                            <span>Google Maps</span>
+                        </a>
+                    </li>
+                    <li data-target="pane-3" id="5">
+                        <a>
+                            <span class="icon is-small"><i class="fab fa-superpowers"></i></span>
+                            <span>Team</span>
+                        </a>
+                    </li>
+                    <li data-target="pane-4" id="6">
+                        <a>
+                            <span class="icon is-small"><i class="fa fa-film"></i></span>
+                            <span>Video</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane" id="pane-1" class="level">
+                    <figure>
+                        <img src="https://www.portal80.com.co/web2014/wp-content/uploads/2016/09/Banner-mapa-interactivo.jpg" alt="" class="cent">
+                    </figure>
+                </div>
+                <div class="tab-pane" id="pane-2" class="level">
+                        <figure>
+                            <img src="https://www.portal80.com.co/web2014/wp-content/uploads/2015/02/p2.jpg" alt="" class="cent">
+                        </figure>
+                </div>
+                
+                <div class="tab-pane" id="pane-3">
+                    <div class="columns">
+                        <div class="container ">
+                            <div class="columns">
+                                <div class="column">
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <i class="fab fa-github-square fa-4x"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>Dominic Ipsum</strong>
+                                                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <i class="fab fa-empire fa-4x"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>Cassie Ipsum</strong>
+                                                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="column">
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <i class="fab fa-ravelry fa-4x"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>Avery Ipsum</strong>
+                                                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <i class="fab fa-github-alt fa-4x"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>io Ipsum</strong>
+                                                    <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis. ╳
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="pane-6">
+                    <iframe src="https://player.vimeo.com/video/261794608" width="640" height="360" class="video"></iframe>
+                </div>
+                
+                <div class="tab-pane is-active" id="pane-4">
+                    <div class="content">
+                        <h1>Hello World</h1>
+                        <p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+                       
+                       <h4>Fourth level</h4>
+                    
+                                        <pre>
+                                                                                        <div id="map" class="mazemap" ></div>
+                                        
+                                                                                        <script>
+                                                                                            var map = new Mazemap.Map({
+                                                                                                // container id specified in the HTML
+                                                                                                container: 'map',
+
+                                                                                                campuses: 121,
+
+                                                                                                // initial position in lngLat format
+                                                                                                center: { lng: 13.270286316716465, lat: 52.502217640505705 },
+
+                                                                                                // initial zoom
+                                                                                                zoom: 17,
+
+                                                                                                zLevel: 3
+                                                                                            });
+                                                                                            map.on('load', function(){
+                                                                                                // MazeMap ready
+                                                                                    
+                                                                                                var lngLat = map.getCenter();
+                                                                                    
+                                                                                                var marker = new Mazemap.MazeMarker( {
+                                                                                                    color: "MazeBlue",
+                                                                                                    size: 36,
+                                                                                                    zLevel: 3
+                                                                                                } ).setLngLat( lngLat ).addTo(map);
+
+                                                                                                var popup = new Mazemap.Popup({ closeOnClick: true, offset: [0, -27] })
+                                                                                                .setHTML('<h3>Combo!</h3>Cerveza 2x1, aprovecha rápido que se acaba!');
+
+                                                                                                marker.setPopup(popup);
+
+                                                                                                marker.on('click', () => {
+                                                                                                // Can also do extra click handling here...
+                                                                                                console.log('@ Default mazeMarker got clicked!');
+
+
+
+                                                                                                var lngLat2 = map.getCenter();
+                                                                                                lngLat2.lng += 0.00005;
+                                                                                    
+                                                                                                var mazeMarker2 = new Mazemap.MazeMarker( {
+                                                                                                    color: "MazeOrange",
+                                                                                                    size: 40,
+                                                                                                    innerCircle: true,
+                                                                                                    zLevel: 1,
+                                                                                                    glyph: '2',
+                                                                                                    glyphSize: 12,
+                                                                                                    glyphColor: 'MazeOrange',
+                                                                                                    shape: 'circle',
+                                                                                    
+                                                                                                } ).setLngLat( lngLat2 ).addTo(map);
+                                                                                    
+                                                                                    
+                                                                                                var popup2 = new Mazemap.Popup({ closeOnClick: true, offset: [0, -27] })
+                                                                                                .setHTML('<h3>Promoción!</h3>Cerveza 2x1, aprovecha rápido que se acaba!');
+
+                                                                                                mazeMarker2.setPopup(popup2);
+
+                                                                                                mazeMarker2.on('click', () => {
+                                                                                                // Can also do extra click handling here...
+                                                                                                console.log('@ Default mazeMarker got clicked!');
+                                                                                            });
+
+
+
+                                                                                            });
+                                                                                            });
+
+                                         
+                                                                                            // Add zoom and rotation controls to the map.
+                                                                                            map.addControl(new Mazemap.mapboxgl.NavigationControl());
+                                                                                        </script>
+                                                            </pre>
+                    
+                    
+                                                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'clienteapp/js/bulma.js' %}"></script>
+    <script src="{% static 'clienteapp/js/tabs.js' %}"></script>
+</body>
+</html>

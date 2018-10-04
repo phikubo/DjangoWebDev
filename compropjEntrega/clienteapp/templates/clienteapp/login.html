@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'clienteapp/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+		{% if form.errors %}
+		<p>Your username and password didn't match. Please try again.</p>
+		{% endif %}
+		
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static 'clienteapp/images/bg-01.jpg' %}');">
+			<div class="wrap-login100">
+
+				<form method="post" action="{% url 'users_path:login' %}" >{% csrf_token %}
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+
+					<div >
+						
+						
+					{{ form.username.label_tag }}
+					{{ form.username }}
+						
+					</div>
+
+					<div >
+						
+						<td>{{ form.password.label_tag }}</td>
+    					<td>{{ form.password }}</td>
+						
+					</div>
+
+					<br>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="#">
+							Forgot Password?
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{% static 'clienteapp/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'clienteapp/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'clienteapp/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'clienteapp/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'clienteapp/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'clienteapp/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'clienteapp/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'clienteapp/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'clienteapp/js/main.js' %}"></script>
+
+</body>
+</html>

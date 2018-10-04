@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Combos y Promociones</title>
+    <link rel="shortcut icon" href="{% static 'clienteapp/images/fav_icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.7.1-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'clienteapp/css/landing.css' %}">
+</head>
+
+<body>
+    <section class="hero is-info is-fullheight">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="../">
+                            <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
+                        </a>
+                        <span class="navbar-burger burger" data-target="navbarMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenu" class="navbar-menu">
+                        <div class="navbar-end">
+                                {% if user.is_authenticated %}
+                                <span class="navbar-item"> 
+                                You are logged in as {{ user }}.
+                                <a href="/accounts/logout/">Click here to log out.</a>
+                                </span>
+                            <span class="navbar-item">
+                                <a class="button is-white is-outlined" href="#">
+                                    <span class="icon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </a>
+                            </span>
+                            {% else %}
+                            <span class="navbar-item">
+                                <a class="button is-white is-outlined" href="{% url 'users_path:login' %}">
+                                    <span class="icon">
+                                        <i class="fa fa-superpowers"></i>
+                                    </span>
+                                    <span>Login</span>
+                                </a>
+                            </span>
+                            <span class="navbar-item">
+                                <a class="button is-white is-outlined" href="{% url 'users_path:registro_view' %}">
+                                    <span class="icon">
+                                        <i class="fa fa-book"></i>
+                                    </span>
+                                    <span>Registro</span>
+                                </a>
+                            </span>
+                            {% endif %}
+                            
+                        
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            </div>
+
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-6 is-offset-3">
+                        <h1 class="title">
+                            En construcción.
+                        </h1>
+                        <h2 class="subtitle">
+                            Pronto encontraras los mejores combos y promociones. Todo, aquí, ¡En un mismo lugar!, esperanos...
+                        </h2>
+                        
+                        <div class="box">
+                            <div class="field is-grouped">
+                                <p class="control is-expanded">
+                                    <input class="input" type="text" placeholder="Enter your email">
+                                </p>
+                                <p class="control">
+                                    <a class="button is-info">
+                                        Noficame
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    <script async type="text/javascript" src="{% static 'clienteapp/js/bulma.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% load static %}
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Administrador</title>
+		<link rel="shortcut icon" href="{% static 'clienteapp/images/fav_icon.png' %}" type="image/x-icon">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+		<!-- Bulma Version 0.7.1-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+		<link rel="stylesheet" type="text/css" href="{% static 'clienteapp/css/forum.css' %}">
+	</head>
+	<body>
+		<nav class="navbar is-white topNav">
+			<div class="container">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="../">
+						<img src="{% static 'clienteapp/images/bulma.png' %}" width="112" height="28">
+					</a>
+					<div class="navbar-burger burger" data-target="topNav">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<div id="topNav" class="navbar-menu">
+					<div class="navbar-start">
+						<a class="navbar-item" href="{% url 'users_path:landing_view' %}">Home</a>
+						<!--
+						<a class="navbar-item" href="landing.html">Landing</a>
+						<a class="navbar-item" href="blog.html">Blog</a>
+						<a class="navbar-item" href="instaAlbum.html">Album</a>
+						<a class="navbar-item" href="kanban[search].html">Kanban</a>
+						<a class="navbar-item" href="search.html">Search</a>
+						<a class="navbar-item" href="tabs.html">Tabs</a>
+						-->
+					</div>
+					{% if not user.is_authenticated %}
+					<div class="navbar-end">
+							<div class="navbar-item">
+								<div class="field is-grouped">
+									<p class="control">
+										<a class="button is-small" href="/registrar/">
+											<span class="icon">
+												<i class="fa fa-user-plus"></i>
+											</span>
+											<span>
+												Register
+											</span>
+										</a>
+									</p>
+									<p class="control">
+										<a class="button is-small is-info is-outlined" href="/login/">
+											<span class="icon">
+												<i class="fa fa-user"></i>
+											</span>
+											<span>Login</span>
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					{% else %}
+					<div> Bienvenido: {{ user }} o {{ user.username }}  </div>
+                    {% endif %}
+					
+				</div>
+			</div>
+		</nav>
+		<nav class="navbar is-white">
+			<div class="container">
+				<div class="navbar-menu">
+					<div class="navbar-start">
+						<a class="navbar-item is-active" href="/centrocomercial/">Centros Comerciales</a>
+					</div>
+					<div class="navbar-end">
+						<div class="navbar-item">
+							<input class="input" type="search" placeholder="Search forum...">
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		
+		<section class="container">
+			<div class="columns">
+					{% if user.is_authenticated %}
+				<div class="column is-3">
+
+						<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+								<form method="post">
+									{% csrf_token %}
+				
+									<span class="login100-form-title p-b-59">
+										Tu super ComPro! :D {{ form.adscrito }}
+									</span>
+				
+										<div class="wrap-input100 validate-input" data-validate="Name is required">
+												<br>
+											{{ form.nombre }}
+											<span class="focus-input100"></span>
+										</div>
+									
+										<div class="wrap-input100 validate-input" data-validate="Descripcion is required">
+												<br>
+												{{ form.descripcion }}
+												<span class="focus-input100"></span>
+										</div>
+
+										
+			
+				
+										<input class="button is-primary is-block is-alt is-large" type="submit" name="login">
+				
+										
+									
+										
+											
+								
+								</form>
+							</div>
+
+
+
+
+
+
+					
+					
+				</div>
+
+				{% endif %}
+
+				<div class="column is-9">
+					<div class="box content">
+						<article class="post">
+							<h4>Delicioso combo pollo + gaseosa + papas fritas, 2x1!</h4>
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-32x32">
+										<img src="http://bulma.io/images/placeholders/128x128.png">
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+											<a href="#">MacDonnals</a> publicó hace 1 hr &nbsp;
+											<span class="tag">Delicioso</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
+								</div>
+							</div>
+						</article>
+						
+						<article class="post">
+							<h4>Combo Hamburgesa BBQ, solo por hoy, aprovecha ya!</h4>
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-32x32">
+										<img src="http://bulma.io/images/placeholders/128x128.png">
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+											<a href="#">@red</a> publicó hace 1 día &nbsp;
+											<span class="tag">Gigante</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
+								</div>
+							</div>
+						</article>
+
+
+						{% for compro in compros %}
+						<article class="post">
+							
+							<font color="Olive" face="Comic Sans MS,arial">
+									<h1 align="left"><i>{{ compro.nombre }}</i></h1>
+									<h4 align="left">{{ compro.descripcion }}</h4>
+									</font>
+							
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-32x32">
+										{% if  compro.compros.inscripcion_cc.nombre_centro  == "Campanario" %}
+											
+										<img src="https://campanariopopayan.com/images/logomenu.png">
+											
+										<!--	
+											if compro.compros.inscripcion_cc =="terraplaza" imprimir el logo de terraplaza
+											<img src="https://geofisica.com.co/wp-content/uploads/2017/08/terraplaza.png">
+									
+										-->	
+
+										{% else %}
+										
+										<img src="https://geofisica.com.co/wp-content/uploads/2017/08/terraplaza.png">
+										
+										{% endif %}
+									</p>
+								</div>
+
+
+								<div class="media-content">
+									<div class="content">
+										<p>
+											<a href="#">{{ compro.compros }}</a> publicó: {{ compro.release_date }} &nbsp;
+											<span class="tag">{{ compro.compros.inscripcion_cc.nombre_centro }}</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
+								</div>
+							</div>
+						</article>
+
+						{% endfor %}
+						
+						
+						
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="container">
+				<div class="content has-text-centered">
+					<div class="columns is-mobile is-centered">
+						<div class="field is-grouped is-grouped-multiline">
+							<div class="control">
+								<div class="tags has-addons">
+									<a class="tag is-link" href="https://github.com/dansup/bulma-templates">Bulma Templates</a>
+									<span class="tag is-light">Daniel Supernault</span>
+								</div>
+							</div>
+							<div class="control">
+								<div class="tags has-addons">
+									<a class="tag is-link">The source code is licensed</a>
+									<span class="tag is-light">MIT &nbsp;<i class="fa fa-github"></i></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script async type="text/javascript" src="{% static 'clienteapp/js/bulma.js' %}"></script>
+	</body>
+</html>
