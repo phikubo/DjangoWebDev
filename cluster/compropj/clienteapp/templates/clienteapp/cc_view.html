@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>Centros Comerciales</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'clienteapp/images/fav_icon.png' %}">
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css'>
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+        <link rel="stylesheet" href="{% static 'clienteapp/css/kanban.css' %}">
+    </head>
+    <body>
+        <nav class="navbar has-shadow">
+            <div class="container">
+                <div class="navbar-brand"><a class="navbar-item" href="../"><img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox"/></a>
+                <div class="navbar-burger burger" data-target="navMenu"><span></span><span></span><span></span></div>
+            </div>
+
+            
+
+            <div class="navbar-menu" id="navMenu">
+                    
+                <div class="navbar-end">
+                        <span class="navbar-item"> 
+                        {% if user.is_authenticated %}
+                        <div> Bienvenido: {{ user}}   </div>
+                        {% endif %}
+                        
+                    <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">Account</a>
+                    <div class="navbar-dropdown"><a class="navbar-item">Dashboard</a><a class="navbar-item">Profile</a><a class="navbar-item">Settings</a>
+                    <hr class="navbar-divider" />
+                    <div class="navbar-item">Logout</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</nav>
+<!--
+<section class="hero is-info">
+<div class="hero-body">
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <div class="content">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input is-large" type="search" placeholder="" /><span class="icon is-medium is-left"><i class="fa fa-search"></i></span><span class="icon is-medium is-right"><i class="fa fa-empire"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section> 
+-->
+<div class="box cta">
+<div class="columns is-mobile is-centered">
+    <div class="field is-grouped is-grouped-multiline">
+        <div class="control" ><span class="tag is-warning is-large" > <a href="{% url 'users_path:compro_view' %}">Administrar</a></span></div>
+        <div class="control"><span class="tag is-success is-large">En servicio</span></div>
+        <div class="control"><span class="tag is-primary is-large">Proximamente</span></div>
+
+<!-- <div class="control"><span class="tag is-link is-large">Link</span></div>
+        <div class="control"><span class="tag is-success is-large">Success</span></div>
+        <div class="control"><span class="tag is-black is-large">Black</span></div>
+        <div class="control"><span class="tag is-warning is-large">Warning</span></div>
+        <div class="control"><span class="tag is-danger is-large">Danger</span></div>
+        <div class="control"><span class="tag is-info is-large">Info</span></div>
+-->
+
+    </div>
+</div>
+</div>
+<section class="container">
+<div class="columns is-mobile is-centered" id="sectioncontainer">
+    {% for elemento in ccs %}
+    <div class="column is-narrow">
+        <article class="message is-success" >
+            <div class="message-header" id="linktocc" > 
+                <a href="{% url 'users_path:user_view' pk=elemento.id %}">{{ elemento }}</a>
+                
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            
+            <div class="message-body">
+
+                {% for minielemento in locales %}
+                {% if minielemento.inscripcion_cc.nombre_centro == elemento.nombre_centro %}
+                <div class="board-item">
+                        
+                    <div class="board-item-content"><span>{{ minielemento.nombre }}</span></div>
+                </div>
+                {% endif %}
+                {% endfor%}
+                
+            </div>
+
+        </article>
+    </div>
+    {% endfor %}
+
+
+    <div class="column is-narrow">
+        <article class="message is-primary">
+            <div class="message-header">
+                <p>Proximos Centros Comerciales</p>
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+                <div class="board-item">
+                    <div class="board-item-content"><span> Santafé, Bogotá</span></div>
+                </div>
+                <div class="board-item">
+                    <div class="board-item-content"><span> Andino, Bogotá</span></div>
+                </div>
+                <div class="board-item">
+                    <div class="board-item-content"><span> Jardín Plaza, Cali</span></div>
+                </div>
+  
+            </div>
+        </article>
+    </div>
+    
+</div>
+</section>
+<div class="columns is-mobile is-centered">
+<div class="column is-half is-narrow"></div>
+</div>
+<footer>
+<div class="box cta">
+    <div class="columns is-mobile is-centered">
+        <div class="field is-grouped is-grouped-multiline">
+            <div class="control">
+                <div class="tags has-addons"><a class="tag is-link" href="https://github.com/dansup/bulma-templates">Bulma Templates</a><span class="tag is-light">Daniel Supernault</span></div>
+            </div>
+            <div class="control">
+                <div class="tags has-addons"><a class="tag is-link">The source code is licensed</a><span class="tag is-light">MIT  <i class="fa fa-github"></i></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</footer>
+<script src="../js/bulma.js"></script>
+</body>
+</html>
